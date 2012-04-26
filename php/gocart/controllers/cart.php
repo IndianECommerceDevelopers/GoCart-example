@@ -96,9 +96,7 @@ class Cart extends CI_Controller {
 		if(empty($term))
 		{
 			//if there is still no search term throw an error
-			//if there is still no search term throw an error
-			$this->session->set_flashdata('error', lang('search_error'));
-			redirect('cart');
+			$this->load->view('search_error', $data);
 		}
 		else
 		{

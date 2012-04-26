@@ -528,7 +528,6 @@ class Checkout extends CI_Controller {
 		$this->email->initialize($config);
 
 		$this->email->from($this->config->item('email'), $this->config->item('company_name'));
-		$this->email->reply_to($this->config->item('reply_email'),$this->config->item('company_name'));
 		
 		if($this->Customer_model->is_logged_in(false, false))
 		{

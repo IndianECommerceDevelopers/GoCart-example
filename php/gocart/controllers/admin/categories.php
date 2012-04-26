@@ -23,7 +23,7 @@ class Categories extends Admin_Controller {
 		$this->load->view($this->config->item('admin_folder').'/categories', $data);
 	}
 	
-	function organize($id = null)
+	function organize($id = false)
 	{
 		$this->load->helper('form');
 		
@@ -54,7 +54,7 @@ class Categories extends Admin_Controller {
 		$this->Category_model->organize_contents($id, $products);
 	}
 	
-	function form($id = null)
+	function form($id = false)
 	{
 		
 		$config['upload_path']		= 'uploads/images/full';

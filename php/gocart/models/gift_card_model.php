@@ -106,7 +106,6 @@ class Gift_card_model extends CI_Model
 		$this->email->initialize($config);
 
 		$this->email->from($this->config->item('email'));
-		$this->email->reply_to($this->config->item('reply_email'),$this->config->item('company_name'));
 		$this->email->to($gc_data['to_email']);
 
 		$this->email->subject($row['subject']);

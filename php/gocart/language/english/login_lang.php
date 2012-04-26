@@ -11,4 +11,3 @@ $lang['login']							= 'Login';
 $lang['password']						= 'Password';
 $lang['email']							= 'Email';
 $lang['stay_logged_in']					= 'Keep me logged in';
-$lang['or']                     =   'Or';

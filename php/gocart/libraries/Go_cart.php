@@ -83,7 +83,6 @@ class go_cart {
 		$this->_cart_contents['taxable_total'] 				= 0; // omits the price of digital products
 		$this->_cart_contents['cart_total'] 				= 0;
 		$this->_cart_contents['total_items'] 				= 0;
-		$this->_cart_contents['total_quantities'] 			= 0;
 		$this->_cart_contents['shipping_total'] 			= 0;
 		// tax
 		$this->_cart_contents['tax'] 						= 0;
@@ -180,9 +179,6 @@ class go_cart {
 		//add quantity back in and we ceil it just in case someone is being silly submitting a decimal
 		$item['quantity']	= ceil($quantity);
 		
-		//Add the Item Quantity to the Total
-		$this->_cart_contents['total_quantities'] = $this->_cart_contents['total_quantities'] + $item['quantity'];
-		
 		//check to see if the item already exists in the cart
 		//if it does, add the new quantity to the existing quantity
 		//if it does not, add it as a new item
@@ -213,11 +209,7 @@ class go_cart {
 			//this is for non-edited products (except for quantity)
 			if(isset($this->_cart_contents['items'][$newkey]))
 			{
-				//make sure that fixed quantity items remain fixed quantity
-				if(!(bool)$item['fixed_quantity'])
-				{
-					$this->_cart_contents['items'][$newkey]['quantity'] = $this->_cart_contents['items'][$newkey]['quantity'] + $item['quantity'];
-				}
+				$this->_cart_contents['items'][$newkey]['quantity'] = $this->_cart_contents['items'][$newkey]['quantity'] + $item['quantity'];
 			}
 			else
 			{
@@ -229,6 +221,7 @@ class go_cart {
 		// Run the product through the coupons list to check if there is a coupon which applies to it
 		// cart contents item details and coupon data are automatically updated
 		$this->_check_product_for_discount($newkey);
+
 		// Woot!
 		return TRUE;
 	}
@@ -249,8 +242,6 @@ class go_cart {
 			}
 		}
 		
-		//Update the Total Quantities
-		$this->_cart_contents['total_quantities'] = $this->_cart_contents['total_quantities'] - $this->_cart_contents['items'][$cartkey]['quantity'];
 		// Remove the item from our items list
 		unset($this->_cart_contents['items'][$cartkey]);
 		
@@ -264,9 +255,6 @@ class go_cart {
 			return false;
 		}
 		
-		// Update the Total Quantity
-		$quantitybeforeupdate = $this->_cart_contents['items'][$cartkey]['quantity'];
-	
 		// update cart, fixed quantity items restricted to 1
 		if($this->_cart_contents['items'][$cartkey]['fixed_quantity']==0)
 		{
@@ -274,8 +262,6 @@ class go_cart {
 		} else {
 			$this->_cart_contents['items'][$cartkey]['quantity'] = 1;
 		}
-		
-		$this->_cart_contents['total_quantities'] = $this->_cart_contents['total_quantities'] + $this->_cart_contents['items'][$cartkey]['quantity'] - $quantitybeforeupdate;
 		
 		// Update associated coupon discount data
 		if(isset($this->_cart_contents['items'][$cartkey]['coupon_code']))
@@ -726,8 +712,6 @@ class go_cart {
 				// set product subtotal (NOT accounting for coupon discount yet)
 				$val['subtotal'] = ($this_price * $val['quantity']);
 			
-				// Calculate the Total Quantities
-				$this->_cart_contents['total_quantities'] += $val['quantity'];
 			}
 			// total products in the cart
 			$this->_cart_contents['total_items'] = count($this->_cart_contents['items']);	
@@ -1147,8 +1131,7 @@ class go_cart {
 		$save['coupon_discount']	= $this->_cart_contents['coupon_discount'];
 		$save['subtotal']			= $this->_cart_contents['cart_subtotal'];
 		$save['total']				= $this->_cart_contents['cart_total'];
-		$save['total_items']		= $this->_cart_contents['total_items'];
-		$save['total_quantities']	= $this->_cart_contents['total_quantities'];
+		
 		//store the payment info
 		//it's up to the payment method to remove any sensitive data from the array before this time
 		if(!empty($this->_cart_contents['payment']['description']))
@@ -1417,19 +1400,6 @@ class go_cart {
 	function total_items()
 	{
 		return $this->_cart_contents['total_items'];
-	}
-	
-	/**
-	 * Total Number of Quantities in the Cart
-	 *
-	 * Returns the total Quantities count
-	 *
-	 * @access	public
-	 * @return	integer
-	 */
-	function total_quantities()
-	{
-		return $this->_cart_contents['total_quantities'];
 	}
 	
 	/**
