@@ -16,7 +16,7 @@ if ( ! function_exists('force_ssl'))
 			echo "Y I came here <br/>";
 			
 			print_r($_SERVER);
-			
+			die;
 			$CI =& get_instance();
 			$CI->config->config['base_url'] = str_replace('http://', 'https://', $CI->config->config['base_url']);
 			redirect($CI->uri->uri_string());
