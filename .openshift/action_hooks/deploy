@@ -30,7 +30,7 @@ then
 	echo "  GoCart-Admin url APPURL/index.php/admin"
 	echo "  Don't forget to change your GoCart admin password!"
 	echo "  Adapt the Configuration file in the location php/gocart/config/gocart.php to customize GoCart"
-	echo "  By default the Application is deployed in Development mode which enables PHP Error Reporting, to deploy as production set ENVIRONMENT in the php/index.php to 'production'
+	echo "  By default the Application is deployed in Development mode which enables PHP Error Reporting, to deploy as production set ENVIRONMENT in the php/index.php to 'production'"
     echo "=================================================="
 else
     echo "Database found, skipping import."
