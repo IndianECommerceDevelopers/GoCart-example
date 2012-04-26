@@ -7,7 +7,8 @@ class Login extends CI_Controller {
 		parent::__construct();
 		
 		force_ssl();
-		
+		echo "did i come here".
+		die;
 		$this->load->library('Auth');
 		$this->lang->load('login');
 	}
