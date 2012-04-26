@@ -13,8 +13,13 @@ if ( ! function_exists('force_ssl'))
 		if (ssl_support() &&  (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == 'off'))
 		{
 			$CI =& get_instance();
+			$checkreplace =  $CI->config->config['base_url'];
 			$CI->config->config['base_url'] = str_replace('http://', 'https://', $CI->config->config['base_url']);
-			redirect($CI->uri->uri_string());
+			// If we are already on HTTPS and if the Server Variable is not set properly , then avoid endless redirection by checking if there is any change in the url.
+			if(strcmp($checkreplace, $CI->config->config['base_url']))
+			{
+				redirect($CI->uri->uri_string());
+			}
 		}
 	}
 }
