@@ -35,8 +35,7 @@ class Login extends CI_Controller {
 			$remember   = $this->input->post('remember');
 			$redirect	= $this->input->post('redirect');
 			$login		= $this->auth->login_admin($email, $password, $remember);
-			echo "Email : " .$email. "Password : ".$password."Remember : ".$remember."Redirect : ".$redirect;
-			die;
+
 			if ($login)
 			{
 				if ($redirect == '')
