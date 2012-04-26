@@ -10,11 +10,12 @@ if ( ! function_exists('force_ssl'))
 {
 	function force_ssl()
 	{
-		if (ssl_support() &&  $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'http')
+	
+		if (ssl_support() && !((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')))
 		{
-			$CI =& get_instance();
-			$CI->config->config['base_url'] = str_replace('http://', 'https://', $CI->config->config['base_url']);
-			redirect($CI->uri->uri_string());
+				$CI =& get_instance();
+				$CI->config->config['base_url'] = str_replace('http://', 'https://', $CI->config->config['base_url']);
+				redirect($CI->uri->uri_string());
 		}
 	}
 }
