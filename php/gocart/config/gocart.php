@@ -1,20 +1,19 @@
-<?php echo '<?php  if ( ! defined(\'BASEPATH\')) exit(\'No direct script access allowed\');';?>
-
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 // GoCart Theme
 $config['theme']			= 'default';
 
 // SSL support
-$config['ssl_support']		= <?php echo ($ssl_support)?'true':'false';?>;
+$config['ssl_support']		= false;
 
 // Business information
-$config['company_name']		= '<?php echo $company_name;?>';
-$config['address1']			= '<?php echo $address1;?>';
-$config['address2']			= '<?php echo $address2;?>';
-$config['country']			= '<?php echo $country;?>'; // use proper country codes only
-$config['city']				= '<?php echo $city;?>'; 
-$config['state']			= '<?php echo $state;?>';
-$config['zip']				= '<?php echo $zip;?>';
-$config['email']			= '<?php echo $email;?>';
+$config['company_name']		= $_ENV['OPENSHIFT_APP_NAME'];
+$config['address1']			= '1';
+$config['address2']			= '2';
+$config['country']			= 'IN'; // use proper country codes only
+$config['city']				= 'Sga'; 
+$config['state']			= 'sdf';
+$config['zip']				= '32342';
+$config['email']			= 'noreply@self.mail';
 
 // Store currency
 $config['currency']			= 'USD';  // USD, EUR, etc
@@ -37,7 +36,7 @@ $config['size_limit']		= intval(ini_get('upload_max_filesize'))*1024;
 $config['new_customer_status']	= true;
 
 //do we require customers to log in 
-$config['require_login']		= false;
+$config['require_login']		= true;
 
 //default order status
 $config['order_status']			= 'Pending';

@@ -1,5 +1,4 @@
-<?php echo '<?php  if ( ! defined(\'BASEPATH\')) exit(\'No direct script access allowed\');';?>
-
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
@@ -48,12 +47,12 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '<?php echo $hostname;?>';
-$db['default']['username'] = '<?php echo $username;?>';
-$db['default']['password'] = '<?php echo $password;?>';
-$db['default']['database'] = '<?php echo $database;?>';
+$db['default']['hostname'] =  $_ENV['OPENSHIFT_DB_HOST'];
+$db['default']['username'] =  $_ENV['OPENSHIFT_DB_USERNAME'];
+$db['default']['password'] =  $_ENV['OPENSHIFT_DB_PASSWORD'];
+$db['default']['database'] =  $_ENV['OPENSHIFT_APP_NAME'];
 $db['default']['dbdriver'] = 'mysql';
-$db['default']['dbprefix'] = '<?php echo $prefix;?>';
+$db['default']['dbprefix'] = 'gc_';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
