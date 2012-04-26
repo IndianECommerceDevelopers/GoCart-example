@@ -10,6 +10,8 @@ if ( ! function_exists('force_ssl'))
 {
 	function force_ssl()
 	{
+		print_r($_SERVER);
+		
 		if (ssl_support() &&  (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == 'off'))
 		{
 			$CI =& get_instance();
@@ -21,6 +23,9 @@ if ( ! function_exists('force_ssl'))
 				redirect($CI->uri->uri_string());
 			}
 		}
+		print_r($CI->config->config['base_url']);
+		echo @$checkreplace ;
+		die;
 	}
 }
 
