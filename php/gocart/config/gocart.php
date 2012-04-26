@@ -13,7 +13,7 @@ $config['country']			= 'IN'; // use proper country codes only
 $config['city']				= 'Sga'; 
 $config['state']			= 'sdf';
 $config['zip']				= '32342';
-$config['email']			= 'noreply@self.mail';
+$config['email']			= 'noreply@selfmail.com';
 
 // Store currency
 $config['currency']			= 'USD';  // USD, EUR, etc
