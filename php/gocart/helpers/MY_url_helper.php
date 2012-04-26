@@ -25,7 +25,7 @@ if ( ! function_exists('remove_ssl'))
 {
 	function remove_ssl()
 	{	
-		if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on')
+		if ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'))
 		{
 			$CI =& get_instance();
 			$CI->config->config['base_url'] = str_replace('https://', 'http://', $CI->config->config['base_url']);
