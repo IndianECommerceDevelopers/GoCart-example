@@ -3,7 +3,7 @@
 $config['theme']			= 'default';
 
 // SSL support
-$config['ssl_support']		= true;
+$config['ssl_support']		= false;
 
 // Business information
 $config['company_name']		= $_ENV['OPENSHIFT_APP_NAME'];

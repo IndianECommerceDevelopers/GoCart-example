@@ -27,6 +27,7 @@ class Login extends CI_Controller {
 		$this->load->helper('form');
 		$data['redirect']	= $this->session->flashdata('redirect');
 		$submitted 			= $this->input->post('submitted');
+		
 		if ($submitted)
 		{
 			$email		= $this->input->post('email');
@@ -34,6 +35,8 @@ class Login extends CI_Controller {
 			$remember   = $this->input->post('remember');
 			$redirect	= $this->input->post('redirect');
 			$login		= $this->auth->login_admin($email, $password, $remember);
+			echo "Email : " .$email. "Password : ".$password."Remember : ".$remember."Redirect : ".$redirect;
+			die;
 			if ($login)
 			{
 				if ($redirect == '')

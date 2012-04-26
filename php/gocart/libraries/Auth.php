@@ -146,7 +146,7 @@ class Auth
 		$this->CI->db->limit(1);
 		$result = $this->CI->db->get('admin');
 		$result	= $result->row_array();
-		
+		print_r($result);
 		if (sizeof($result) > 0)
 		{
 			$admin = array();
