@@ -11,6 +11,7 @@ if ( ! function_exists('force_ssl'))
 	function force_ssl()
 	{
 		print_r($_SERVER);
+		print_r($CI->config->config['base_url']);
 		
 		if (ssl_support() &&  (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] == 'off'))
 		{
@@ -20,12 +21,16 @@ if ( ! function_exists('force_ssl'))
 			// If we are already on HTTPS and if the Server Variable is not set properly , then avoid endless redirection by checking if there is any change in the url.
 			if(strcmp($checkreplace, $CI->config->config['base_url']))
 			{
+					print_r($CI->config->config['base_url']);
+					die;
+
 				redirect($CI->uri->uri_string());
 			}
+			print_r($CI->config->config['base_url']);
+			die;
+
 		}
-		print_r($CI->config->config['base_url']);
-		echo @$checkreplace ;
-		die;
+
 	}
 }
 
