@@ -58,10 +58,12 @@ GoCart Security:
 	
 My Additional Features on GoCart
 ================================
-I am maintaining another Forked Repository (https://github.com/IndianECommerceDevelopers/GoCart) where I have implemented certain additional features like 1)  Social Login(customer can login using Facebook, Google or Yahoo Account).  2) Reply_to Address 3) Custom Product Size 4)  Save Shipping/Billing Address,etc,.
-You can check my repository(https://github.com/IndianECommerceDevelopers/GoCart) if you are interested in any of these features
+I am maintaining another Forked Repository (https://github.com/IndianECommerceDevelopers/GoCart) where I have implemented certain additional features like 
+1)  Social Login(customer can login using Facebook, Google or Yahoo Account).  2) Reply_to Address 3) Custom Product Size 4)  Save Shipping/Billing Address,etc,.
+
+If you are interested in any of these features then you can fork/check my repository at (https://github.com/IndianECommerceDevelopers/GoCart)
 
 
 Credits
 =======
-All the credits goes to GoCart, CodeIgniter and OpenShift Team.
+All the credits goes to [GoCart](http://gocartdv.com/), [CodeIgniter](http://codeigniter.com/) and [OpenShift Team](https://openshift.redhat.com).
