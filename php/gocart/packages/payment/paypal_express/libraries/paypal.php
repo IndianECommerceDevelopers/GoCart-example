@@ -215,7 +215,7 @@ class PayPal {
 
 	private function getScheme() {
 		$scheme = 'http';
-		if (isset($_SERVER['HTTPS']) and $_SERVER['HTTPS'] == 'on') {
+		if ((isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off' ) || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) {
 			$scheme .= 's';
 		}
 		return $scheme;

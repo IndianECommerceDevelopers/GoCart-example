@@ -177,9 +177,15 @@ class CI_Security {
 
 		if ($secure_cookie)
 		{
-			$req = isset($_SERVER['HTTPS']) ? $_SERVER['HTTPS'] : FALSE;
+			//$req = isset($_SERVER['HTTPS']) ? $_SERVER['HTTPS'] : FALSE;
 
-			if ( ! $req OR $req == 'off')
+			
+			/*if ( ! $req OR $req == 'off')
+			{
+				return FALSE;
+			}*/
+			
+			if(!((isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off' ) || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')))
 			{
 				return FALSE;
 			}

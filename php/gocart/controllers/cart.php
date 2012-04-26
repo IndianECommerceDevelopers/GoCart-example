@@ -55,9 +55,6 @@ class Cart extends CI_Controller {
 		$data['banners']			= $this->Banner_model->get_homepage_banners(5);
 		$data['boxes']				= $this->box_model->get_homepage_boxes(4);
 		$data['homepage']			= true;
-		echo "baseurl : ".base_url().'<br/>';
-		echo "siteurl : ".site_url().'<br/>';
-		die;
 		$this->load->view('homepage', $data);
 	}
 
